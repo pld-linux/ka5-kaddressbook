@@ -1,15 +1,15 @@
-%define		kdeappsver	19.04.1
+%define		kdeappsver	20.12.3
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	19.04.1
+Version:	20.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
-Source0:	http://download.kde.org/stable/applications/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	011ab2ba15b395255f4c52f945c7e3eb
+Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
+# Source0-md5:	2bfe4a37f7edeec474c058008c664b18
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -23,7 +23,6 @@ BuildRequires:	gpgme-c++-devel >= 1.8.0
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
 BuildRequires:	ka5-akonadi-search-devel >= %{kdeappsver}
 BuildRequires:	ka5-grantleetheme-devel >= %{kdeappsver}
-BuildRequires:	ka5-kdepim-apps-libs-devel >= %{kdeappsver}
 BuildRequires:	ka5-kontactinterface-devel >= %{kdeappsver}
 BuildRequires:	ka5-kpimtextedit-devel >= %{kdeappsver}
 BuildRequires:	ka5-libkdepim-devel >= %{kdeappsver}
@@ -57,6 +56,18 @@ powerful search capabilities • Integrates with other Kontact
 components, e.g. exporting Birthday reminders to KOrganizer • Capable
 of groupware integration • Powered by Akonadi
 
+%package devel
+Summary:	Header files for %{kaname} development
+Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
+Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description devel
+Header files for %{kaname} development.
+
+%description devel -l pl.UTF-8
+Pliki nagłówkowe dla programistów używających %{kaname}.
+
 %prep
 %setup -q -n %{kaname}-%{version}
 
@@ -84,14 +95,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
-/etc/xdg/kaddressbook.categories
-/etc/xdg/kaddressbook.renamecategories
 %attr(755,root,root) %{_bindir}/kaddressbook
 %attr(755,root,root) %ghost %{_libdir}/libkaddressbookprivate.so.5
 %attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.5.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbook_config_plugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbookpart.so
-%attr(755,root,root) %{_libdir}/qt5/plugins/kontact_kaddressbookplugin.so
 %{_desktopdir}/kaddressbook-importer.desktop
 %{_desktopdir}/org.kde.kaddressbook.desktop
 %{_iconsdir}/hicolor/128x128/apps/kaddressbook.png
@@ -106,6 +114,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kconf_update/kaddressbook.upd
 %{_datadir}/kontact/ksettingsdialog/kaddressbook.setdlg
 %{_datadir}/kservices5/kaddressbook_config_plugins.desktop
-%{_datadir}/kservices5/kaddressbookpart.desktop
 %{_datadir}/kservices5/kontact/kaddressbookplugin.desktop
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
+%{_datadir}/qlogging-categories5/kaddressbook.categories
+%{_datadir}/qlogging-categories5/kaddressbook.renamecategories
+%attr(755,root,root) %ghost %{_libdir}/libKPimAddressbookImportExport.so.5
+%attr(755,root,root) %{_libdir}/libKPimAddressbookImportExport.so.5.*.*
+%attr(755,root,root) %{_libdir}/qt5/plugins/kontact5/kontact_kaddressbookplugin.so
+%{_desktopdir}/kaddressbook-view.desktop
+
+%files devel
+%defattr(644,root,root,755)
+%{_includedir}/KPim/KAddressBookImportExport
+%{_includedir}/KPim/kaddressbookimportexport
+%{_includedir}/KPim/kaddressbookimportexport_version.h
+%{_libdir}/cmake/KPimAddressbookImportExport
+%{_libdir}/libKPimAddressbookImportExport.so
+%{_libdir}/qt5/mkspecs/modules/qt_KAddressbookImportExport.pri
+
