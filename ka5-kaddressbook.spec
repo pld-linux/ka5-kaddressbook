@@ -1,15 +1,15 @@
-%define		kdeappsver	20.12.3
+%define		kdeappsver	21.04.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	20.12.3
+Version:	21.04.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	2bfe4a37f7edeec474c058008c664b18
+# Source0-md5:	648d5c8a3e6e094ecccfcbdde676c0d0
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -96,8 +96,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kaddressbook
-%attr(755,root,root) %ghost %{_libdir}/libkaddressbookprivate.so.5
-%attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.5.*.*
+%ghost %{_libdir}/libkaddressbookprivate.so.5
+%attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.*.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbook_config_plugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbookpart.so
 %{_desktopdir}/kaddressbook-importer.desktop
@@ -118,8 +118,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
 %{_datadir}/qlogging-categories5/kaddressbook.categories
 %{_datadir}/qlogging-categories5/kaddressbook.renamecategories
-%attr(755,root,root) %ghost %{_libdir}/libKPimAddressbookImportExport.so.5
-%attr(755,root,root) %{_libdir}/libKPimAddressbookImportExport.so.5.*.*
+%ghost %{_libdir}/libKPimAddressbookImportExport.so.5
+%attr(755,root,root) %{_libdir}/libKPimAddressbookImportExport.so.*.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kontact5/kontact_kaddressbookplugin.so
 %{_desktopdir}/kaddressbook-view.desktop
 
@@ -131,4 +131,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/cmake/KPimAddressbookImportExport
 %{_libdir}/libKPimAddressbookImportExport.so
 %{_libdir}/qt5/mkspecs/modules/qt_KAddressbookImportExport.pri
-
