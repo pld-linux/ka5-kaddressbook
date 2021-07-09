@@ -56,6 +56,22 @@ powerful search capabilities • Integrates with other Kontact
 components, e.g. exporting Birthday reminders to KOrganizer • Capable
 of groupware integration • Powered by Akonadi
 
+%description -l pl.UTF-8
+KAddressBook potrafi zachować szczegóły osobiste Twojej rodziny, przyjaciół
+i inne kontakty.
+
+Właściwości
+
+• Importuje i eksportuje do niemalże każdego standardu książki adresowej
+• Czyta pliki formatu .vcf, może importować i eksportować pliki vCards
+i csv.
+• Może używać wielu serwerów LDAP
+• Konfigurowalne filtry i duże możliwości wyszukiwania
+• Integruje się z innymi komponentami Kontact, np. eksportując
+przypomnienia o urodzinach do KOrganizera
+• Możliwość integracji z groupware
+• "Napędzane" przez Akonadi
+
 %package devel
 Summary:	Header files for %{kaname} development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających %{kaname}
