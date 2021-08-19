@@ -1,15 +1,15 @@
-%define		kdeappsver	21.04.3
+%define		kdeappsver	21.08.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	21.04.3
+Version:	21.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	6334efab8f191b9214ede6ef53cb337c
+# Source0-md5:	099b616941277e129773c4c07d7ac408
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -57,20 +57,18 @@ components, e.g. exporting Birthday reminders to KOrganizer • Capable
 of groupware integration • Powered by Akonadi
 
 %description -l pl.UTF-8
-KAddressBook potrafi zachować szczegóły osobiste Twojej rodziny, przyjaciół
-i inne kontakty.
+KAddressBook potrafi zachować szczegóły osobiste Twojej rodziny,
+przyjaciół i inne kontakty.
 
 Właściwości
 
-• Importuje i eksportuje do niemalże każdego standardu książki adresowej
-• Czyta pliki formatu .vcf, może importować i eksportować pliki vCards
-i csv.
-• Może używać wielu serwerów LDAP
-• Konfigurowalne filtry i duże możliwości wyszukiwania
-• Integruje się z innymi komponentami Kontact, np. eksportując
-przypomnienia o urodzinach do KOrganizera
-• Możliwość integracji z groupware
-• "Napędzane" przez Akonadi
+• Importuje i eksportuje do niemalże każdego standardu książki
+adresowej • Czyta pliki formatu .vcf, może importować i eksportować
+pliki vCards i csv. • Może używać wielu serwerów LDAP • Konfigurowalne
+filtry i duże możliwości wyszukiwania • Integruje się z innymi
+komponentami Kontact, np. eksportując przypomnienia o urodzinach do
+KOrganizera • Możliwość integracji z groupware • "Napędzane" przez
+Akonadi
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -114,8 +112,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kaddressbook
 %ghost %{_libdir}/libkaddressbookprivate.so.5
 %attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.*.*.*
-%attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbook_config_plugins.so
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbookpart.so
+%dir %{_libdir}/qt5/plugins/pim/kcms/kaddressbook
+%{_libdir}/qt5/plugins/pim/kcms/kaddressbook/kaddressbook_config_plugins.so
 %{_desktopdir}/kaddressbook-importer.desktop
 %{_desktopdir}/org.kde.kaddressbook.desktop
 %{_iconsdir}/hicolor/128x128/apps/kaddressbook.png
