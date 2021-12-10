@@ -1,15 +1,15 @@
-%define		kdeappsver	21.08.3
+%define		kdeappsver	21.12.0
 %define		kframever	5.56.0
 %define		qtver		5.9.0
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	21.08.3
+Version:	21.12.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	8c78731fa8a04a4360bccf8c5d228dac
+# Source0-md5:	30bef1eab9dde62275bc8c69ef58cdbc
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -125,9 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/64x64/apps/kaddressbook.png
 %{_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_datadir}/kaddressbook
-%attr(755,root,root) %{_datadir}/kconf_update/kaddressbook-15.08-kickoff.sh
-%{_datadir}/kconf_update/kaddressbook.upd
-%{_datadir}/kontact/ksettingsdialog/kaddressbook.setdlg
 %{_datadir}/kservices5/kaddressbook_config_plugins.desktop
 %{_datadir}/kservices5/kontact/kaddressbookplugin.desktop
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
