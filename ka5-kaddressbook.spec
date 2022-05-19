@@ -8,7 +8,7 @@
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
 Version:	22.04.1
-Release:	1
+Release:	2
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
@@ -135,6 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_datadir}/kaddressbook
 %{_datadir}/kservices5/kaddressbook_config_plugins.desktop
+%dir %{_datadir}/kservices5/kontact
 %{_datadir}/kservices5/kontact/kaddressbookplugin.desktop
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
 %{_datadir}/qlogging-categories5/kaddressbook.categories
