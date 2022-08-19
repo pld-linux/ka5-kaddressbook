@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.04.3
+%define		kdeappsver	22.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	22.04.3
+Version:	22.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	93e3ddf8ef4cbd41e5f57b33dd337dbe
+# Source0-md5:	7780144d1b077cdc3f78955bb393f7f4
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -52,12 +52,12 @@ and other contacts.
 
 Features
 
-• Imports and exports to nearly every address book standard • Reads
-.vcf format files, and can import and export vCards and csv format
-files • Can use multiple LDAPservers • Configurable filters and
-powerful search capabilities • Integrates with other Kontact
-components, e.g. exporting Birthday reminders to KOrganizer • Capable
-of groupware integration • Powered by Akonadi
+• Imports and exports to nearly every address book standard •
+Reads .vcf format files, and can import and export vCards and csv
+format files • Can use multiple LDAPservers • Configurable filters
+and powerful search capabilities • Integrates with other Kontact
+components, e.g. exporting Birthday reminders to KOrganizer •
+Capable of groupware integration • Powered by Akonadi
 
 %description -l pl.UTF-8
 KAddressBook potrafi zachować szczegóły osobiste Twojej rodziny,
@@ -66,12 +66,12 @@ przyjaciół i inne kontakty.
 Właściwości
 
 • Importuje i eksportuje do niemalże każdego standardu książki
-adresowej • Czyta pliki formatu .vcf, może importować i eksportować
-pliki vCards i csv. • Może używać wielu serwerów LDAP • Konfigurowalne
-filtry i duże możliwości wyszukiwania • Integruje się z innymi
-komponentami Kontact, np. eksportując przypomnienia o urodzinach do
-KOrganizera • Możliwość integracji z groupware • "Napędzane" przez
-Akonadi
+adresowej • Czyta pliki formatu .vcf, może importować i
+eksportować pliki vCards i csv. • Może używać wielu serwerów
+LDAP • Konfigurowalne filtry i duże możliwości wyszukiwania •
+Integruje się z innymi komponentami Kontact, np. eksportując
+przypomnienia o urodzinach do KOrganizera • Możliwość integracji
+z groupware • "Napędzane" przez Akonadi
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -122,8 +122,6 @@ rm -rf $RPM_BUILD_ROOT
 %ghost %{_libdir}/libkaddressbookprivate.so.5
 %attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.*.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbookpart.so
-%dir %{_libdir}/qt5/plugins/pim/kcms/kaddressbook
-%{_libdir}/qt5/plugins/pim/kcms/kaddressbook/kaddressbook_config_plugins.so
 %{_desktopdir}/kaddressbook-importer.desktop
 %{_desktopdir}/org.kde.kaddressbook.desktop
 %{_iconsdir}/hicolor/128x128/apps/kaddressbook.png
@@ -134,16 +132,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/64x64/apps/kaddressbook.png
 %{_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_datadir}/kaddressbook
-%{_datadir}/kservices5/kaddressbook_config_plugins.desktop
-%dir %{_datadir}/kservices5/kontact
-%{_datadir}/kservices5/kontact/kaddressbookplugin.desktop
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
 %{_datadir}/qlogging-categories5/kaddressbook.categories
 %{_datadir}/qlogging-categories5/kaddressbook.renamecategories
 %ghost %{_libdir}/libKPimAddressbookImportExport.so.5
 %attr(755,root,root) %{_libdir}/libKPimAddressbookImportExport.so.*.*.*
-%attr(755,root,root) %{_libdir}/qt5/plugins/kontact5/kontact_kaddressbookplugin.so
 %{_desktopdir}/kaddressbook-view.desktop
+%dir %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook
+%{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kaddressbook_config_plugins.so
+%{_libdir}/qt5/plugins/pim5/kontact/kontact_kaddressbookplugin.so
 
 %files devel
 %defattr(644,root,root,755)
