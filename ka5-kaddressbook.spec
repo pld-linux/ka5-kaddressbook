@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	22.12.3
+%define		kdeappsver	23.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	22.12.3
-Release:	3
+Version:	23.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	139db4e1d449170a18e5a770636bc65b
+# Source0-md5:	9c8743b44b6e6f14791b5bbbca225c8a
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -120,8 +120,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kaname}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kaddressbook
-%ghost %{_libdir}/libkaddressbookprivate.so.5
-%attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.*.*.*
 %attr(755,root,root) %{_libdir}/qt5/plugins/kaddressbookpart.so
 %{_desktopdir}/kaddressbook-importer.desktop
 %{_desktopdir}/org.kde.kaddressbook.desktop
@@ -136,19 +134,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
 %{_datadir}/qlogging-categories5/kaddressbook.categories
 %{_datadir}/qlogging-categories5/kaddressbook.renamecategories
-%ghost %{_libdir}/libKPimAddressbookImportExport.so.5
-%attr(755,root,root) %{_libdir}/libKPimAddressbookImportExport.so.*.*.*
 %{_desktopdir}/kaddressbook-view.desktop
 %dir %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook
-%{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kaddressbook_config_plugins.so
-%{_libdir}/qt5/plugins/pim5/kontact/kontact_kaddressbookplugin.so
-%{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kaddressbook_config_userfeedback.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kaddressbook_config_plugins.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kontact/kontact_kaddressbookplugin.so
+%attr(755,root,root) %{_libdir}/qt5/plugins/pim5/kcms/kaddressbook/kaddressbook_config_userfeedback.so
+%ghost %{_libdir}/libKPim5AddressbookImportExport.so.5
+%attr(755,root,root) %{_libdir}/libKPim5AddressbookImportExport.so.*.*.*
+%ghost %{_libdir}/libkaddressbookprivate.so.5
+%attr(755,root,root) %{_libdir}/libkaddressbookprivate.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KPim/KAddressBookImportExport
-%{_includedir}/KPim/kaddressbookimportexport
-%{_includedir}/KPim/kaddressbookimportexport_version.h
-%{_libdir}/cmake/KPimAddressbookImportExport
-%{_libdir}/libKPimAddressbookImportExport.so
 %{_libdir}/qt5/mkspecs/modules/qt_KAddressbookImportExport.pri
+%{_includedir}/KPim5/KAddressBookImportExport
+%{_includedir}/KPim5/kaddressbookimportexport
+%{_includedir}/KPim5/kaddressbookimportexport_version.h
+%{_libdir}/cmake/KPim5AddressbookImportExport
+%{_libdir}/cmake/KPimAddressbookImportExport
+%{_libdir}/libKPim5AddressbookImportExport.so
