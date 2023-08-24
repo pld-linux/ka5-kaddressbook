@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	23.04.3
+%define		kdeappsver	23.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		kaddressbook
 Summary:	KAddressbook
 Name:		ka5-%{kaname}
-Version:	23.04.3
+Version:	23.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	cd103d65d5fa08976a49f4e19fd02a42
+# Source0-md5:	4a8cc08cb39e9a7e8e400c3619020636
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel
@@ -20,7 +20,7 @@ BuildRequires:	Qt5Gui-devel
 BuildRequires:	Qt5PrintSupport-devel
 BuildRequires:	Qt5Test-devel
 BuildRequires:	Qt5Widgets-devel
-BuildRequires:	cmake >= 2.8.12
+BuildRequires:	cmake >= 3.20
 BuildRequires:	gettext-devel
 BuildRequires:	gpgme-c++-devel >= 1.8.0
 BuildRequires:	ka5-akonadi-devel >= %{kdeappsver}
@@ -90,18 +90,16 @@ Pliki nagłówkowe dla programistów używających %{kaname}.
 %setup -q -n %{kaname}-%{version}
 
 %build
-install -d build
-cd build
 %cmake \
+	-B build \
 	-G Ninja \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
 	-DHTML_INSTALL_DIR=%{_kdedocdir} \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-	..
-%ninja_build
+	-DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+%ninja_build -C build
 
 %if %{with tests}
-ctest
+ctest --test-dir build
 %endif
 
 
@@ -148,8 +146,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/qt5/mkspecs/modules/qt_KAddressbookImportExport.pri
 %{_includedir}/KPim5/KAddressBookImportExport
-%{_includedir}/KPim5/kaddressbookimportexport
-%{_includedir}/KPim5/kaddressbookimportexport_version.h
 %{_libdir}/cmake/KPim5AddressbookImportExport
 %{_libdir}/cmake/KPimAddressbookImportExport
 %{_libdir}/libKPim5AddressbookImportExport.so
